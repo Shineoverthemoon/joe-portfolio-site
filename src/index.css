@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ink-950 text-bone-100 font-sans;
+    background-image:
+      radial-gradient(at 15% 0%, rgba(124, 243, 160, 0.04) 0px, transparent 50%),
+      radial-gradient(at 85% 100%, rgba(108, 182, 255, 0.04) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+
+  ::selection {
+    @apply bg-signal-green/30 text-bone-50;
+  }
+}
+
+@layer components {
+  /* Subtle grid background */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+
+  /* Section label — small caps mono */
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.2em] text-bone-300;
+  }
+
+  /* Card base */
+  .card {
+    @apply relative rounded-md border border-ink-700/80 bg-ink-900/60 backdrop-blur-sm transition-all duration-300;
+  }
+
+  .card-hover {
+    @apply hover:border-signal-green/40 hover:bg-ink-800/60 hover:-translate-y-0.5;
+  }
+
+  /* Button — primary */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-md bg-signal-green px-5 py-2.5 font-mono text-sm font-semibold text-ink-950 transition-all hover:bg-signal-green/90 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-signal-green/20;
+  }
+
+  /* Button — ghost */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 rounded-md border border-ink-600 px-5 py-2.5 font-mono text-sm font-semibold text-bone-100 transition-all hover:border-bone-300 hover:bg-ink-800/60;
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-sm border border-ink-600 bg-ink-800/60 px-2 py-0.5 font-mono text-[10.5px] uppercase tracking-wider text-bone-200;
+  }
+
+  /* Status dot */
+  .status-dot::before {
+    content: '';
+    @apply inline-block h-1.5 w-1.5 rounded-full mr-1.5 -translate-y-px;
+  }
+  .status-live::before { @apply bg-signal-green; box-shadow: 0 0 8px rgba(124, 243, 160, 0.6); }
+  .status-progress::before { @apply bg-signal-amber; }
+  .status-demo::before { @apply bg-signal-blue; }
+  .status-private::before { @apply bg-bone-300; }
+}
+
+/* Decorative angle bracket cursor on display headings */
+.display-h {
+  font-feature-settings: "ss01", "ss02";
+}
